@@ -11,9 +11,9 @@ wiki: https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%96%E3%83%AB%E3%82%BD%E3%83%B
 
 
 
-// $arr = array(0,1,2,3,4,5,6,7,8,9);
 // $arr = array(9,8,7,6,5,4,3,2,1,0);
 // $arr = array(0,1,2,3,4,5,6,7,9,8);
+// $arr = array(0,1,2,3,4,5,6,7,8,9);
 $arr = array(10,8,11,2,3,4,5,6,100,7,9,30,600,21);
 
 
@@ -21,16 +21,26 @@ $cnt = count($arr);
 
 for($ii = 0; $ii < $cnt-1; $ii++){
 
+    $is_changed = false;
     for($i = 0; $i < $cnt-1; $i++){
+
         $current = $i;
         $next    = $i + 1;
 
+        //次の値と比較して、次の値より大きければ場所の入れ替え
         if ($arr[$current] > $arr[$next]){
-            $tmp = $arr[$current]; //一次保存して、お互い入れ替える
+            $tmp = $arr[$current]; //一時保存
             $arr[$current] = $arr[$next];
             $arr[$next] = $tmp;
+
+            $is_changed = true;
         }
 
+    }
+
+    //1回も要素の入れ替えがない場合終了
+    if($is_changed === false){
+        break;
     }
 
 }
