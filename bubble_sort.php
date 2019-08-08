@@ -22,7 +22,8 @@ $cnt = count($arr);
 for($ii = 0; $ii < $cnt-1; $ii++){
 
     $is_changed = false;
-    for($i = 0; $i < $cnt-1; $i++){
+    //$ii-1 最後の値はもうソート済のため
+    for($i = 0; $i < $cnt-$ii-1; $i++){
 
         $current = $i;
         $next    = $i + 1;
